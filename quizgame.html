@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>50 Question Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 30px auto; padding: 0 15px; }
+    button { margin: 5px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    button:disabled { background-color: #ccc; cursor: default; }
+    #result { margin-top: 20px; font-weight: bold; min-height: 24px; }
+    #nextBtn { margin-top: 20px; padding: 10px 30px; font-size: 18px; }
+  </style>
+</head>
+<body>
+
+  <h2 id="question"></h2>
+  <div id="choices"></div>
+  <p id="result"></p>
+  <button id="nextBtn" style="display:none;">Next Question</button>
+
+  <script>
+    const quiz = [
+      { question: "What is the capital of France?", choices: ["Paris", "London", "Rome", "Berlin"], answer: "Paris" },
+      { question: "2 + 2 = ?", choices: ["3", "4", "5", "22"], answer: "4" },
+      { question: "Python is a ...?", choices: ["language", "snake", "car", "movie"], answer: "language" },
+      { question: "Which planet is known as the Red Planet?", choices: ["Earth", "Mars", "Jupiter", "Venus"], answer: "Mars" },
+      { question: "Who wrote 'Romeo and Juliet'?", choices: ["Shakespeare", "Dickens", "Hemingway", "Tolkien"], answer: "Shakespeare" },
+      { question: "What color do you get by mixing red and white?", choices: ["Pink", "Purple", "Orange", "Brown"], answer: "Pink" },
+      { question: "Which gas do humans breathe in?", choices: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], answer: "Oxygen" },
+      { question: "How many continents are there on Earth?", choices: ["5", "6", "7", "8"], answer: "7" },
+      { question: "Which animal is called the King of the Jungle?", choices: ["Lion", "Tiger", "Elephant", "Giraffe"], answer: "Lion" },
+      { question: "Which ocean is the largest?", choices: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: "Pacific" },
+      { question: "What’s the freezing point of water in °C?", choices: ["0", "32", "-10", "100"], answer: "0" },
+      { question: "Who painted the Mona Lisa?", choices: ["Da Vinci", "Van Gogh", "Picasso", "Michelangelo"], answer: "Da Vinci" },
+      { question: "Which language is primarily used for web page styling?", choices: ["HTML", "CSS", "JavaScript", "Python"], answer: "CSS" },
+      { question: "Which company makes iPhones?", choices: ["Apple", "Samsung", "Google", "Microsoft"], answer: "Apple" },
+      { question: "What do bees produce?", choices: ["Honey", "Milk", "Silk", "Wax"], answer: "Honey" },
+      { question: "How many sides does a triangle have?", choices: ["2", "3", "4", "5"], answer: "3" },
+      { question: "What’s the main language spoken in Spain?", choices: ["Spanish", "French", "Italian", "Portuguese"], answer: "Spanish" },
+      { question: "How many days are there in a leap year?", choices: ["365", "366", "364", "367"], answer: "366" },
+      { question: "What is H2O?", choices: ["Water", "Oxygen", "Hydrogen", "Salt"], answer: "Water" },
+      { question: "Who discovered gravity?", choices: ["Newton", "Einstein", "Galileo", "Tesla"], answer: "Newton" },
+      { question: "What is the smallest prime number?", choices: ["0", "1", "2", "3"], answer: "2" },
+      { question: "What is the chemical symbol for gold?", choices: ["Au", "Ag", "Pb", "Fe"], answer: "Au" },
+      { question: "How many legs does a spider have?", choices: ["6", "8", "10", "12"], answer: "8" },
+      { question: "Which planet is closest to the Sun?", choices: ["Mercury", "Venus", "Earth", "Mars"], answer: "Mercury" },
+      { question: "What’s the boiling point of water in °C?", choices: ["90", "100", "110", "120"], answer: "100" },
+      { question: "What currency is used in Japan?", choices: ["Yen", "Dollar", "Euro", "Won"], answer: "Yen" },
+      { question: "Which organ pumps blood through the body?", choices: ["Lungs", "Brain", "Heart", "Kidneys"], answer: "Heart" },
+      { question: "Which metal is liquid at room temperature?", choices: ["Mercury", "Gold", "Silver", "Copper"], answer: "Mercury" },
+      { question: "What gas do plants absorb for photosynthesis?", choices: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Helium"], answer: "Carbon Dioxide" },
+      { question: "What is the tallest mountain in the world?", choices: ["K2", "Mount Everest", "Kangchenjunga", "Lhotse"], answer: "Mount Everest" },
+      { question: "Which is the largest mammal?", choices: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"], answer: "Blue Whale" },
+      { question: "What is the main ingredient in bread?", choices: ["Sugar", "Flour", "Salt", "Water"], answer: "Flour" },
+      { question: "What device do we use to look at stars?", choices: ["Microscope", "Telescope", "Periscope", "Stethoscope"], answer: "Telescope" },
+      { question: "What is the capital of Japan?", choices: ["Kyoto", "Tokyo", "Osaka", "Hiroshima"], answer: "Tokyo" },
+      { question: "Who painted the ceiling of the Sistine Chapel?", choices: ["Michelangelo", "Raphael", "Da Vinci", "Donatello"], answer: "Michelangelo" },
+      { question: "Which planet has rings?", choices: ["Mars", "Saturn", "Jupiter", "Venus"], answer: "Saturn" },
+      { question: "What is the powerhouse of the cell?", choices: ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"], answer: "Mitochondria" },
+      { question: "Which language is known as the language of the web?", choices: ["Python", "Java", "JavaScript", "C++"], answer: "JavaScript" },
+      { question: "Who wrote 'Harry Potter'?", choices: ["J.K. Rowling", "Tolkien", "Roald Dahl", "Stephen King"], answer: "J.K. Rowling" },
+      { question: "What is the fastest land animal?", choices: ["Cheetah", "Lion", "Tiger", "Leopard"], answer: "Cheetah" },
+      { question: "Which is the smallest country in the world?", choices: ["Monaco", "Vatican City", "San Marino", "Liechtenstein"], answer: "Vatican City" },
+      { question: "What is the hardest natural substance?", choices: ["Gold", "Diamond", "Iron", "Platinum"], answer: "Diamond" },
+      { question: "Which element is needed for breathing?", choices: ["Hydrogen", "Nitrogen", "Oxygen", "Carbon"], answer: "Oxygen" },
+      { question: "What is the main ingredient of sushi?", choices: ["Fish", "Rice", "Seaweed", "Soy Sauce"], answer: "Rice" },
+      { question: "Who invented the telephone?", choices: ["Edison", "Bell", "Tesla", "Newton"], answer: "Bell" },
+      { question: "Which ocean lies on the east coast of the USA?", choices: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: "Atlantic" },
+      { question: "Which country is known as the Land of the Rising Sun?", choices: ["China", "Japan", "Korea", "Thailand"], answer: "Japan" },
+      { question: "What is the symbol for Sodium on the periodic table?", choices: ["S", "Na", "N", "Sn"], answer: "Na" },
+      { question: "What is the largest organ in the human body?", choices: ["Heart", "Skin", "Liver", "Brain"], answer: "Skin" },
+      { question: "What gas is essential for photosynthesis?", choices: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"], answer: "Carbon Dioxide" }
+    ];
+
+    // Shuffle questions so order changes every time
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    shuffleArray(quiz);
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const choicesEl = document.getElementById('choices');
+    const resultEl = document.getElementById('result');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function loadQuestion() {
+      resultEl.textContent = '';
+      nextBtn.style.display = 'none';
+      choicesEl.innerHTML = '';
+
+      const q = quiz[currentQuestion];
+      questionEl.textContent = `Q${currentQuestion + 1}. ${q.question}`;
+
+      q.choices.forEach(choice => {
+        const btn = document.createElement('button');
+        btn.textContent = choice;
+        btn.onclick = () => checkAnswer(choice);
+        choicesEl.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selected) {
+      const correct = quiz[currentQuestion].answer;
+      if (selected === correct) {
+        resultEl.textContent = '✅ Correct!';
+        score++;
+      } else {
+        resultEl.textContent = `❌ Wrong! The correct answer is "${correct}".`;
+      }
+      nextBtn.style.display = 'inline-block';
+
+      Array.from(choicesEl.children).forEach(btn => btn.disabled = true);
+    }
+
+    nextBtn.onclick = () => {
+      currentQuestion++;
+      if (currentQuestion < quiz.length) {
+        loadQuestion();
+      } else {
+        questionEl.textContent = `🎉 Quiz finished! Your score: ${score} / ${quiz.length}`;
+        choicesEl.innerHTML = '';
+        nextBtn.style.display = 'none';
+        resultEl.textContent = '';
+      }
+    };
+
+    loadQuestion();
+  </script>
+
+</body>
+</html>
