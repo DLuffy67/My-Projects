@@ -1,125 +1,635 @@
-:root { --primary: #1a1a2e; --secondary: #16213e; --accent: #ff4d5a; --light: #f0f0f0; --dark: #0f0f1b; --text: #e6e6e6; --transition: all 0.4s ease; } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: 'Poppins', sans-serif; background: var(--primary); color: var(--text); line-height: 1.6; overflow-x: hidden; } .container { width: 90%; max-width: 1200px; margin: 0 auto; } /* Header Styles */ header { background: rgba(10, 10, 20, 0.9); position: fixed; width: 100%; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); } .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; } .logo { display: flex; align-items: center; gap: 10px; } .logo h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 28px; background: linear-gradient(45deg, var(--accent), #ff8a00); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 1px; } .logo i { color: var(--accent); font-size: 24px; } .nav-links { display: flex; gap: 30px; } .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: var(--transition); position: relative; } .nav-links a:hover { color: var(--accent); } .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: var(--transition); } .nav-links a:hover::after { width: 100%; } /* Hero Section */ .hero { height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 80px; } .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, rgba(26, 26, 46, 0.8) 0%, rgba(10, 10, 20, 0.95) 70%); z-index: -1; } .hero-content { max-width: 700px; z-index: 2; } .hero h2 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; } .highlight { color: var(--accent); } .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; } .btn { display: inline-block; background: var(--accent); color: white; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; font-size: 1rem; box-shadow: 0 5px 15px rgba(255, 77, 90, 0.3); } .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 77, 90, 0.4); } /* Portfolio Section */ .section { padding: 100px 0; } .section-title { text-align: center; margin-bottom: 60px; } .section-title h2 { font-size: 2.5rem; font-weight: 700; position: relative; display: inline-block; padding-bottom: 15px; } .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent); border-radius: 2px; } .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; } .portfolio-item { border-radius: 10px; overflow: hidden; position: relative; height: 250px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); transition: var(--transition); } .portfolio-item:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); } .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); } .portfolio-item:hover img { transform: scale(1.05); } .portfolio-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: var(--transition); padding: 20px; text-align: center; } .portfolio-item:hover .portfolio-overlay { opacity: 1; } .portfolio-overlay h3 { color: white; font-size: 1.5rem; margin-bottom: 10px; } .portfolio-overlay p { color: #ccc; margin-bottom: 15px; font-size: 0.9rem; } .play-btn { width: 50px; height: 50px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; transition: var(--transition); } .play-btn:hover { transform: scale(1.1); background: #ff2d3d; } /* About Section */ .about { background: var(--secondary); } .about-content { max-width: 800px; margin: 0 auto; } .about-text { text-align: center; } .about-text h3 { font-size: 2rem; margin-bottom: 20px; } .about-text p { margin-bottom: 20px; opacity: 0.9; } .skills { margin-top: 30px; } .skill-bar { margin-bottom: 20px; } .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; } .skill-bar-in { height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; } .skill-level { height: 100%; background: var(--accent); border-radius: 4px; } .contact-info { margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; } .contact-item { background: rgba(255, 255, 255, 0.05); padding: 25px 15px; border-radius: 10px; transition: var(--transition); } .contact-item:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); } .contact-icon { width: 60px; height: 60px; margin: 0 auto 15px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--accent); } /* Footer */ footer { background: var(--dark); padding: 60px 0 30px; } .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; } .footer-col h3 { font-size: 1.5rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; } .footer-col h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 3px; background: var(--accent); } .social-links { display: flex; gap: 15px; margin-top: 20px; justify-content: center; } .social-links a { width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: var(--text); transition: var(--transition); } .social-links a:hover { background: var(--accent); transform: translateY(-3px); } .footer-col ul { list-style: none; } .footer-col ul li { margin-bottom: 15px; } .footer-col ul li a { color: var(--text); text-decoration: none; transition: var(--transition); opacity: 0.8; } .footer-col ul li a:hover { color: var(--accent); padding-left: 5px; } .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; opacity: 0.7; } /* Responsive */ @media (max-width: 992px) { .hero h2 { font-size: 2.8rem; } } @media (max-width: 768px) { .nav-links { display: none; } .hero h2 { font-size: 2.3rem; } .hero p { font-size: 1rem; } .section { padding: 70px 0; } } @media (max-width: 480px) { .hero h2 { font-size: 2rem; } .portfolio-grid { grid-template-columns: 1fr; } } 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AINCine | Professional Video Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #ff4d5a;
+            --light: #f0f0f0;
+            --dark: #0f0f1b;
+            --text: #e6e6e6;
+            --transition: all 0.4s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(10, 10, 20, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            background: linear-gradient(45deg, var(--accent), #ff8a00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .logo i {
+            color: var(--accent);
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(26, 26, 46, 0.8) 0%, rgba(10, 10, 20, 0.95) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            z-index: 2;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .highlight {
+            color: var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(255, 77, 90, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 77, 90, 0.4);
+        }
+        
+        /* Portfolio Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-overlay p {
+            color: #ccc;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: var(--transition);
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            background: #ff2d3d;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--secondary);
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            text-align: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-bar {
+            margin-bottom: 20px;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-bar-in {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+        
+        .contact-info {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px 15px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col ul li a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-film"></i>
+                    <h1>AINCine</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-AINCine
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Crafting <span class="highlight">Cinematic Experiences</span> Through Expert Video Editing</h2>
+                <p>Welcome to AINCine - where your vision meets professional editing expertise. I transform raw footage into compelling visual stories that captivate audiences and elevate brands.</p>
+                <a href="#portfolio" class="btn">View My Work</a>
+            </div>
+        </div>
+    </section>
 
-Home Portfolio About Contact 
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Portfolio</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1574717024453-354056aafa98?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Commercial Project">
+                    <div class="portfolio-overlay">
+                        <h3>Commercial Project</h3>
+                        <p>Brand advertisement for fashion retailer</p>
+                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Documentary">
+                    <div class="portfolio-overlay">
+                        <h3>Documentary</h3>
+                        <p>Short documentary on urban wildlife</p>
+                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1579032326199-68e2c7d9dd3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Music Video">
+                    <div class="portfolio-overlay">
+                        <h3>Music Video</h3>
+                        <p>Indie band music video production</p>
+                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1585849834908-3481231155e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Corporate Video">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Video</h3>
+                        <p>Company profile for tech startup</p>
+                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1559703248-dca2ecfa883c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Short Film">
+                    <div class="portfolio-overlay">
+                        <h3>Short Film</h3>
+                        <p>Drama short film festival entry</p>
+                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1569317002804-ab77bcf1bce4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Event Highlights">
+                    <div class="portfolio-overlay">
+                        <h3>Event Highlights</h3>
+                        <p>Conference highlights reel</p>
+                        <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-Crafting Cinematic Experiences Through Expert Video Editing
-
-Welcome to AINCine - where your vision meets professional editing expertise. I transform raw footage into compelling visual stories that captivate audiences and elevate brands.
-
-View My Work 
-
-My Portfolio
-
-￼ 
-
-Commercial Project
-
-Brand advertisement for fashion retailer
-
-￼ 
-
-Documentary
-
-Short documentary on urban wildlife
-
-￼ 
-
-Music Video
-
-Indie band music video production
-
-￼ 
-
-Corporate Video
-
-Company profile for tech startup
-
-￼ 
-
-Short Film
-
-Drama short film festival entry
-
-￼ 
-
-Event Highlights
-
-Conference highlights reel
-
-About Me
-
-Professional Video Editor & Motion Graphics Designer
-
-Hi, I'm Arafat Islam, a passionate video editor with over 5 years of experience in creating compelling visual content. Based in Dhaka, Bangladesh, I specialize in transforming raw footage into polished, engaging stories that resonate with audiences.
-
-My expertise spans commercial advertisements, music videos, documentaries, corporate videos, and short films. I'm proficient in industry-standard software and stay updated with the latest editing techniques and trends.
-
-My Skills
-
-Adobe Premiere Pro 95% 
-
-After Effects 90% 
-
-DaVinci Resolve 85% 
-
-Color Grading 88% 
-
-Location
-
-Dhaka, Bangladesh
-
-Phone
-
-01644972068
-
-Email
-
-contact@aincine.com
-
-Availability
-
-Mon-Fri: 9AM - 6PM
-
-AINCine
-
-Professional video editing services that transform your vision into compelling visual stories.
-
-Quick Links
-
-Home
-
-Portfolio
-
-About
-
-Contact
-
-Services
-
-Video Editing
-
-Color Grading
-
-Motion Graphics
-
-Visual Effects
-
-Audio Enhancement
-
-Video Restoration
-
-Contact Info
-
-Dhaka, Bangladesh
-
-01644972068
-
-contact@aincine.com
-
-Mon-Fri: 9AM - 6PM
-
-© 2023 AINCine. All Rights Reserved. Designed and Developed by Arafat Islam
-
-// Smooth scrolling for navigation links document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }); }); // Header background change on scroll window.addEventListener('scroll', function() { const header = document.querySelector('header'); if (window.scrollY > 100) { header.style.background = 'rgba(10, 10, 20, 0.98)'; } else { header.style.background = 'rgba(10, 10, 20, 0.9)'; } }); // Portfolio item interaction const portfolioItems = document.querySelectorAll('.portfolio-item'); portfolioItems.forEach(item => { item.addEventListener('mouseenter', function() { this.style.transform = 'translateY(-10px)'; }); item.addEventListener('mouseleave', function() { this.style.transform = 'translateY(0)'; }); }); 
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Professional Video Editor & Motion Graphics Designer</h3>
+                    <p>Hi, I'm Arafat Islam, a passionate video editor with over 5 years of experience in creating compelling visual content. Based in Dhaka, Bangladesh, I specialize in transforming raw footage into polished, engaging stories that resonate with audiences.</p>
+                    <p>My expertise spans commercial advertisements, music videos, documentaries, corporate videos, and short films. I'm proficient in industry-standard software and stay updated with the latest editing techniques and trends.</p>
+                    
+                    <div class="skills">
+                        <h4>My Skills</h4>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Adobe Premiere Pro</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar-in">
+                                <div class="skill-level" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>After Effects</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar-in">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>DaVinci Resolve</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar-in">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Color Grading</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar-in">
+                                <div class="skill-level" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                    
